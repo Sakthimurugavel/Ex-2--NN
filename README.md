@@ -1,8 +1,11 @@
-<H3>Name : SAKTHIVEL M</H3>
+<H3>Name: SAKTHIVEL M</H3>
 <H3>Register no. 212222240088</H3>
-<H3>Date : 29/03/2025</H3>
-<H3>Experiment No. 2 </H3>
-## Implementation of Perceptron for Binary Classification
+<H3>Date:</H3>
+
+<H3> Experiment No. 2 :</H3>
+
+# Implementation of Perceptron for Binary Classification
+
 # AIM:
 To implement a perceptron for classification using Python<BR>
 
@@ -49,39 +52,38 @@ STEP 9:For ‘N ‘ iterations ,do the following:<BR>
 STEP 10:Plot the error for each iteration <BR>
 STEP 11:Print the accuracy<BR>
 # PROGRAM:
-```
+ ```
 import numpy as np                                                      
-import pandas as pd                                                    
+import pandas as pd                                                     
 import matplotlib.pyplot as plt
 from mpl_toolkits import mplot3d
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 class Perceptron:
-  def __init__(self,learning_rate=0.1):
-    self.learning_rate = learning_rate
-    self._b = 0.0
-    self._w = None
-    self.misclassified_samples = []
-  def fit(self, x: np.array, y: np.array, n_iter=10):
-    self._b = 0.0
-    self._w = np.zeros(x.shape[1])
-    self.misclassified_samples = []
-    for _ in range(n_iter):
-      errors = 0
-      for xi, yi in zip(x, y):
-        update = self.learning_rate * (yi - self.predict(xi))
-        self._b += update
-        self._w += update * xi
-        errors += int(update != 0.0)
-      self.misclassified_samples.append(errors)
-  def f(self, x: np.array) -> float:
-      return np.dot(x, self._w) + self._b
-  def predict(self, x: np.array):
-      return np.where(self.f(x) >= 0, 1, -1)
+def _init_(self,learning_rate=0.1):
+  self.learning_rate = learning_rate
+  self._b = 0.0
+  self._w = None
+  self.misclassified_samples = []
+def fit(self, x: np.array, y: np.array, n_iter=10):
+  self._b = 0.0
+  self._w = np.zeros(x.shape[1])
+  self.misclassified_samples = []
+  for _ in range(n_iter):
+    errors = 0
+    for xi, yi in zip(x, y):
+      update = self.learning_rate * (yi - self.predict(xi))
+      self._b += update
+      self._w += update * xi
+      errors += int(update != 0.0)
+    self.misclassified_samples.append(errors)
+def f(self, x: np.array) -> float:
+    return np.dot(x, self._w) + self._b
+def predict(self, x: np.array):
+    return np.where(self.f(x) >= 0, 1, -1)
 url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
 df = pd.read_csv(url, header=None)
 print(df.head())
-
 y = df.iloc[:, 4].values
 x = df.iloc[:, 0:3].values
 fig = plt.figure()
@@ -95,7 +97,6 @@ ax.scatter(x[50:100,0], x[50:100,1], x[50:100,2], color='blue',marker='^', s=4, 
 ax.scatter(x[100:150,0], x[100:150,1], x[100:150,2], color='green',marker='x', s=4, label="Iris Virginica")
 plt.legend(loc='upper left')
 plt.show()
-
 x = x[0:100, 0:2] 
 y = y[0:100]
 plt.figure(figsize=(4,4))
@@ -105,7 +106,6 @@ plt.xlabel("Sepal length")
 plt.ylabel("Petal length")
 plt.legend(loc='upper left')
 plt.show()
-
 y = np.where(y == 'Iris-setosa', 1, -1)
 x[:, 0] = (x[:, 0] - x[:, 0].mean()) / x[:, 0].std()
 x[:, 1] = (x[:, 1] - x[:, 1].mean()) / x[:, 1].std()
@@ -117,17 +117,21 @@ plt.figure(figsize=(4,4))
 plt.plot(range(1, len(classifier.misclassified_samples) + 1),classifier.misclassified_samples, marker='o')
 plt.xlabel('Epoch')
 plt.ylabel('Errors')
-plt.show() 
+plt.show()
 ```
+
 # OUTPUT:
-
-![Screenshot 2025-03-24 135349](https://github.com/user-attachments/assets/b7a7b847-e19e-4cdf-a411-929ff7184498)
-
-![Screenshot 2025-03-24 135358](https://github.com/user-attachments/assets/ba31a83b-1b51-49b6-90f5-4bc5b5955812)
-
-![Screenshot 2025-03-24 135412](https://github.com/user-attachments/assets/25da41d1-33cb-406e-a6d1-cbbc52822d19)
-
-![Screenshot 2025-03-24 135420](https://github.com/user-attachments/assets/4e7ac6d9-c5cf-49c2-bf2b-4559ed530d75)
+### Dataset:
+![image](https://github.com/user-attachments/assets/897e9cf3-a80a-4e9d-a546-e698ae5430bc)
+### Iris dataset:
+![image](https://github.com/user-attachments/assets/bef38968-84e7-47aa-8b7b-97da636f1a4a)
+### Scatterplot:
+![image](https://github.com/user-attachments/assets/f5c958f8-fca8-4a8e-a68a-6b9c04d0f6fc)
+### Errorplot and Accuracy:
+![image](https://github.com/user-attachments/assets/121adf6a-6559-45e5-98a5-61e03b437695)
+   
 
 # RESULT:
  Thus, a single layer perceptron model is implemented using python to classify Iris data set.
+
+ 
